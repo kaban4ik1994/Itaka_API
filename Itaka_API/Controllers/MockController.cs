@@ -21,10 +21,13 @@ namespace Itaka_API.Controllers
             const BindingFlags flags = BindingFlags.GetField | BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.NonPublic |
                                        BindingFlags.IgnoreCase | BindingFlags.InvokeMethod | BindingFlags.Instance;
 
-            var propertyNames = parameters.GetType().GetProperties(flags).Select(info => string.Format("{0}={1}&", info.Name, parameters.GetType()
+            
+            var propertyNames = parameters.GetType().GetProperties(flags).Select(info =>string.Format("{0}={1}&", info.Name == "Child_Age" || info.Name == "Promotions" 
+                ? info.Name + "[]" 
+                : info.Name, parameters.GetType()
                     .InvokeMember(info.Name, flags, null, parameters, null) ?? string.Empty));
             var paramString = string.Empty;
-            propertyNames.ToList().ForEach(s => paramString += s);
+            propertyNames.ToList().ForEach(s => paramString += s.ToLower());
             paramString = paramString.Remove(paramString.Length - 1);
             //foreach (var name in propertyNames)
             //{
