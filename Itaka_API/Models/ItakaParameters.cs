@@ -54,5 +54,6 @@ namespace Itaka_API.Models
         public string Grade { get; set; }
 
         public string Order { get; set; }
+        public string Ts { get; set; }
     }
 }

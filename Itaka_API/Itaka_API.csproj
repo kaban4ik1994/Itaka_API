@@ -88,7 +88,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\MockController.cs" />
+    <Compile Include="Controllers\ItakaHitController.cs" />
+    <Compile Include="Controllers\StronyController.cs" />
+    <Compile Include="Controllers\ZeroController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
